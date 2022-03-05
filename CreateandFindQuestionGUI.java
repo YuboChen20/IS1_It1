@@ -42,6 +42,24 @@ public class CreateQuestionGUI extends JFrame {
 	private JLabel jLabelMsg = new JLabel();
 	private JLabel jLabelError = new JLabel();
 	
+	//Cosas Nuevas
+	private JScrollPane scrollPaneQueries = new JScrollPane();
+	private JTable tableQueries = new JTable();
+	private DefaultTableModel tableModelQueries;
+	private Event selectedEvent;
+	
+	private String[] columnNamesEvents = new String[] {
+			ResourceBundle.getBundle("Etiquetas").getString("EventN"), 
+			ResourceBundle.getBundle("Etiquetas").getString("Event"), 
+
+	};
+	private String[] columnNamesQueries = new String[] {
+			ResourceBundle.getBundle("Etiquetas").getString("QueryN"), 
+			ResourceBundle.getBundle("Etiquetas").getString("Query")
+
+	};
+	//
+	
 	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
 
 	public CreateQuestionGUI(Vector<domain.Event> v) {
@@ -187,6 +205,39 @@ public class CreateQuestionGUI extends JFrame {
 				}
 			}
 		});
+		
+		//Agregado nuevo
+		
+		jComboBoxEvents.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(!(jComboBoxEvents.getSelectedItem()==null)) {
+					selectedEvent = (Event) jComboBoxEvents.getSelectedItem();
+					
+					if(tableQueries.isEnabled()==false) {
+						
+						scrollPaneQueries.setEnabled(false);
+						scrollPaneQueries.setToolTipText("No available offer for that room type.");
+					}else {
+						
+						scrollPaneQueries.setEnabled(true);
+						scrollPaneQueries.setToolTipText("Book this offer: "+selectedEvent);
+					}
+					
+					
+
+				}
+			}
+		});
+		
+		scrollPaneQueries.setViewportView(tableQueries);
+		tableModelQueries = new DefaultTableModel(null, columnNamesQueries);
+		
+		tableQueries.setModel(tableModelQueries);
+		tableQueries.getColumnModel().getColumn(0).setPreferredWidth(25);
+		tableQueries.getColumnModel().getColumn(1).setPreferredWidth(268);
+		
+		this.getContentPane().add(scrollPaneQueries, null);
 	}
 
 	
