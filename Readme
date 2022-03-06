@@ -6,8 +6,15 @@ Funcionamiento de la aplicacion:
       Una pestaña para registrarte.
     
     Si eres usuario.
-      Se abre pestaña solo para consultar.
+      Se abre pestaña solo para consultar y escoger pronosticos.
+        
       
     Si eres administrador.
       Se abre la pestaña para crear pronosticos y consultar.
       
+      
+Interfaces necesarias:
+  Interfaz de Login, Main.
+  Interfaz de Register, Acceso desde Login a traves de un boton.
+  Interfaz de Usuario, Al logearte, si la cuenta es de usuario, se abriara esta interfaz.
+  Interfaz de Administrador, Al logerte, si la cuenta es de administrador, se abrira esta interfaz.
