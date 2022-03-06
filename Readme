@@ -2,7 +2,12 @@
 Funcionamiento de la aplicacion:
 
   Se hace un login
-    Poniendo usuario y contraseña
-    Una pestaña para registrarte.
+      Poniendo usuario y contraseña
+      Una pestaña para registrarte.
     
-  
+    Si eres usuario.
+      Se abre pestaña solo para consultar.
+      
+    Si eres administrador.
+      Se abre la pestaña para crear pronosticos y consultar.
+      
