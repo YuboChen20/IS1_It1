@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.JTextArea;
 import java.awt.Color;
 
 public class SignUp extends JFrame {
@@ -88,15 +88,17 @@ public class SignUp extends JFrame {
 		contentPane.add(numTarjeta);
 		numTarjeta.setColumns(10);
 		
-		JButton registrarse = new JButton("Sign Up");
-		registrarse.setForeground(Color.BLACK);
-		registrarse.setBounds(82, 209, 274, 31);
-		contentPane.add(registrarse);
-		
 		JLabel lblNewLabel_4 = new JLabel("Datos opcionales");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_4.setBounds(180, 144, 101, 14);
 		contentPane.add(lblNewLabel_4);
 		
+		JButton registrarse = new JButton("Sign Up");
+		registrarse.setBounds(173, 190, 91, 23);
+		contentPane.add(registrarse);
+		
+		JTextArea text = new JTextArea();
+		text.setBounds(88, 232, 256, 22);
+		contentPane.add(text);
 		}
 }
