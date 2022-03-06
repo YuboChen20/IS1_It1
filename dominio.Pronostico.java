@@ -32,7 +32,7 @@ public class Pronostico implements Serializable {
 		super();
 		this.pronosNumber = pronNumber;
 		this.pronostico = prono;
-		this.numbApostados++;
+		this.numbApostados= 0;
 		this.question = question;
 		this.user = usuario;
 	}
@@ -40,9 +40,17 @@ public class Pronostico implements Serializable {
 	public Pronostico(String prono, Question quest, Usuario usuario) {
 		super();
 		this.pronostico = prono;
-		this.numbApostados++;
+		this.numbApostados= 0;
 		this.question = quest;
 		this.user = usuario;
+		
+	}
+	
+	public Pronostico(String prono, Question quest) {
+		super();
+		this.pronostico = prono;
+		this.numbApostados= 0;
+		this.question = quest;
 		
 	}
 
