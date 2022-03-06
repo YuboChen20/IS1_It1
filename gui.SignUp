@@ -1,0 +1,102 @@
+package gui;
+
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.awt.Color;
+
+public class SignUp extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField correo;
+	private JTextField nombreUsuario;
+	private JPasswordField passwordField;
+	private JTextField numTarjeta;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					SignUp frame = new SignUp();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public SignUp() {
+		setTitle("Sign Up");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		correo = new JTextField();
+		correo.setBounds(114, 162, 242, 17);
+		contentPane.add(correo);
+		correo.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Correo:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblNewLabel.setBounds(71, 164, 59, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Usuario:");
+		lblNewLabel_1.setBounds(88, 32, 71, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		nombreUsuario = new JTextField();
+		nombreUsuario.setBounds(169, 29, 187, 20);
+		contentPane.add(nombreUsuario);
+		nombreUsuario.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Contrase\u00F1a:");
+		lblNewLabel_2.setBounds(74, 63, 112, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(169, 60, 187, 20);
+		contentPane.add(passwordField);
+		
+		JLabel lblNewLabel_3 = new JLabel("N\u00FAmero tarjeta:");
+		lblNewLabel_3.setBounds(62, 98, 97, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		numTarjeta = new JTextField();
+		numTarjeta.setBounds(169, 95, 187, 20);
+		contentPane.add(numTarjeta);
+		numTarjeta.setColumns(10);
+		
+		JButton registrarse = new JButton("Sign Up");
+		registrarse.setForeground(Color.BLACK);
+		registrarse.setBounds(82, 209, 274, 31);
+		contentPane.add(registrarse);
+		
+		JLabel lblNewLabel_4 = new JLabel("Datos opcionales");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_4.setBounds(180, 144, 101, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		}
+}
