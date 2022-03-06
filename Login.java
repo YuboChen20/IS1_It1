@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
-public class Login {
+public class Login extends JFrame {
 
 	private JFrame frame;
 	private JPasswordField passwordField;
