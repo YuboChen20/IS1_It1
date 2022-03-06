@@ -96,7 +96,7 @@ public class MainGUI extends JFrame {
 			jContentPane.add(getLblNewLabel());
 			jContentPane.add(getBoton3());
 			jContentPane.add(getBoton2());
-			jContentPane.add(getPanel());
+			//jContentPane.add(getPanel());
 		}
 		return jContentPane;
 	}
@@ -151,6 +151,8 @@ public class MainGUI extends JFrame {
 		}
 		return jLabelSelectOption;
 	}
+	
+	/*
 	private JRadioButton getRdbtnNewRadioButton() {
 		if (rdbtnNewRadioButton == null) {
 			rdbtnNewRadioButton = new JRadioButton("English");
@@ -191,6 +193,7 @@ public class MainGUI extends JFrame {
 		}
 		return rdbtnNewRadioButton_2;
 	}
+	
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -200,6 +203,7 @@ public class MainGUI extends JFrame {
 		}
 		return panel;
 	}
+	*/
 	
 	private void redibujar() {
 		jLabelSelectOption.setText(ResourceBundle.getBundle("Etiquetas").getString("SelectOption"));
@@ -209,3 +213,4 @@ public class MainGUI extends JFrame {
 	}
 	
 } // @jve:decl-index=0:visual-constraint="0,0"
+
