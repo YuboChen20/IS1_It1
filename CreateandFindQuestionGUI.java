@@ -39,7 +39,8 @@ public class CreateQuestionGUI extends JFrame {
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 
 	private JButton jButtonCreate = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateQuery"));
-	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
+	//Cambios
+	private JButton jButtonLogout = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Logout"));
 	private JLabel jLabelMsg = new JLabel();
 	private JLabel jLabelError = new JLabel();
 	
@@ -96,12 +97,14 @@ public class CreateQuestionGUI extends JFrame {
 				jButtonCreate_actionPerformed(e);
 			}
 		});
-		jButtonClose.setBounds(new Rectangle(275, 275, 130, 30));
-		jButtonClose.addActionListener(new ActionListener() {
+		//Cambios
+		jButtonLogout.setBounds(new Rectangle(275, 275, 130, 30));
+		jButtonLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButtonClose_actionPerformed(e);
+				jButtonLogout_actionPerformed(e);
 			}
 		});
+		//
 
 		jLabelMsg.setBounds(new Rectangle(275, 182, 305, 20));
 		jLabelMsg.setForeground(Color.red);
@@ -113,7 +116,8 @@ public class CreateQuestionGUI extends JFrame {
 		this.getContentPane().add(jLabelMsg, null);
 		this.getContentPane().add(jLabelError, null);
 
-		this.getContentPane().add(jButtonClose, null);
+		//Cambios
+		this.getContentPane().add(jButtonLogout, null);
 		this.getContentPane().add(jButtonCreate, null);
 		this.getContentPane().add(jTextFieldQuery, null);
 		this.getContentPane().add(jLabelQuery, null);
@@ -331,7 +335,8 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 		}
 	}
 
-	private void jButtonClose_actionPerformed(ActionEvent e) {
+	//Cambio
+	private void jButtonLogout_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
 }
