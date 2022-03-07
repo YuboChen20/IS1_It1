@@ -270,11 +270,27 @@ public class DataAccess  {
 		return true;
 	}
 	
-		public Usuario login(Usuario user) {
+	public Usuario login(Usuario user) {
 		Usuario u = db.find(Usuario.class,user.getUserName());
 		if(u==null)return null;
 		if(!u.getPassword().equals(user.getPassword()))return null;
 		return u;
+	}
+	
+	public boolean createEvent(String description, Date eventDate) {
+		System.out.println(">> DataAccess: createEvent=> event= "+description+" date= "+eventDate);
+		
+		TypedQuery<Event>  query = db.createQuery("SELECT FROM Event e WHERE e.eventDate='"+eventDate+"'",Event.class);
+		List<Event> eventos = query.getResultList();
+		if(eventos!=null) 
+			for(Event e: eventos)if(e.getDescription().equals(description))return false;
+			
+		db.getTransaction().begin();
+		Event evento = new Event(description, eventDate);	
+		db.persist(evento); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
+					// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+		db.getTransaction().commit();
+		return true;
 	}
 		
 }
