@@ -249,7 +249,7 @@ public class CreateandFindQuestionGUI extends JFrame {
 		
 		this.getContentPane().add(scrollPaneQueries, null);
 		
-		JButton createEvent = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateandFindQuestionGUI.btnNewButton.text")); 
+		JButton createEvent = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent")); 
 		createEvent.setBounds(450, 206, 130, 30);
 		getContentPane().add(createEvent);
 		
@@ -283,7 +283,7 @@ public class CreateandFindQuestionGUI extends JFrame {
 		description.setBounds(95, 209, 352, 20);
 		getContentPane().add(description);
 		
-		JLabel lblNewLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateandFindQuestionGUI.lblNewLabel.text")); //$NON-NLS-1$ //$NON-NLS-2$
+		JLabel lblNewLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("Description")); //$NON-NLS-1$ //$NON-NLS-2$
 		lblNewLabel.setBounds(25, 214, 75, 14);
 		getContentPane().add(lblNewLabel);
 		
