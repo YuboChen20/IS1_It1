@@ -269,5 +269,12 @@ public class DataAccess  {
 		System.out.println(">> DataAccess: createUser=> User: "+ userName +" registered");
 		return true;
 	}
+	
+		public Usuario login(Usuario user) {
+		Usuario u = db.find(Usuario.class,user.getUserName());
+		if(u==null)return null;
+		if(!u.getPassword().equals(user.getPassword()))return null;
+		return u;
+	}
 		
 }
