@@ -120,16 +120,32 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * It is invoked only when the option "initialize" is declared in the tag dataBaseOpenMode of resources/config.xml file
 	 */	
     @WebMethod	
-	 public void initializeBD(){
+    public void initializeBD(){
     	dbManager.open(false);
 		dbManager.initializeDB();
 		dbManager.close();
-	}
+    }
     
     @WebMethod
     public boolean createUser(String us, String pass,String ccode) {
     	dbManager.open(false);
     	boolean b = dbManager.createUser(us, pass,ccode);
+    	this.dbManager.close();
+    	return b;
+    }
+	
+    @WebMethod
+    public Usuario login(String user, String pass) {
+    	this.dbManager.open(false);
+    	Usuario u= dbManager.login(user, pass);
+    	this.dbManager.close();
+    	return u;
+    }
+    
+    @WebMethod
+    public boolean createEvent(String description, Date eventDate) {
+    	dbManager.open(false);
+    	boolean b = dbManager.createEvent(description,eventDate);
     	this.dbManager.close();
     	return b;
     }
