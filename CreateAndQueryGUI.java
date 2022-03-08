@@ -15,6 +15,7 @@ import java.beans.PropertyChangeListener;
 import businessLogic.BLFacade;
 import configuration.UtilDate;
 import domain.Event;
+import domain.Pronostico;
 import domain.Question;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
@@ -53,10 +54,16 @@ public class CreateAndQueryGUI extends JFrame {
 			ResourceBundle.getBundle("Etiquetas").getString("Query")
 
 	};
+	private String[] columnNamesProostico = new String[] {
+			ResourceBundle.getBundle("Etiquetas").getString("PronosticoN"), 
+			ResourceBundle.getBundle("Etiquetas").getString("Pronostico")
+
+	};
 	private JTextField textFieldDescripcionEvento;
 	private final JLabel jLabelMsg2 = new JLabel();
 	private final JScrollPane scrollPanePronostico = new JScrollPane();
 	private final JTable tablePronosticos = new JTable();
+	private DefaultTableModel tableModelPronostico;
 	private final JLabel jLabelPronostico = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateAndQueryGUI.jLabelPronostico.text")); //$NON-NLS-1$ //$NON-NLS-2$
 	private final JTextField textFieldPronostico = new JTextField();
 	private final JButton jButtonPronostico = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateAndQueryGUI.jButtonPronostico.text")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -285,24 +292,39 @@ public class CreateAndQueryGUI extends JFrame {
 		jLabelMsg2.setBounds(321, 289, 225, 20);
 		
 		getContentPane().add(jLabelMsg2);
+		
 		scrollPanePronostico.setBounds(new Rectangle(138, 274, 406, 116));
 		scrollPanePronostico.setBounds(610, 47, 250, 146);
 		
-		getContentPane().add(scrollPanePronostico);
-		tablePronosticos.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Pronostico", "Numero Pronostico"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				Object.class, Integer.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
+		tableQueries.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int i=tableQueries.getSelectedRow();
+				domain.Question ev=(domain.Question)tableModelPronostico.getValueAt(i,2); // obtain ev object
+				Vector<Pronostico> pronosticos=ev.getPronosticos();
+
+				tableModelQueries.setDataVector(null, columnNamesQueries);
+
+				if (pronosticos.isEmpty())
+					jLabelPronostico.setText(ResourceBundle.getBundle("Etiquetas").getString("NoQueries")+": "+ev.getQuestion());
+				else 
+					jLabelPronostico.setText(ResourceBundle.getBundle("Etiquetas").getString("SelectedQuerie")+" "+ev.getQuestion());
+
+				for (domain.Pronostico p:pronosticos){
+					Vector<Object> row = new Vector<Object>();
+
+					row.add(p.getPronosNumber());
+					row.add(p.getPronostico());
+					tableModelPronostico.addRow(row);	
+				}
+				tablePronosticos.getColumnModel().getColumn(0).setPreferredWidth(25);
+				tablePronosticos.getColumnModel().getColumn(1).setPreferredWidth(268);
 			}
 		});
+		
+		getContentPane().add(scrollPanePronostico);
+		tablePronosticos.setModel(tableModelPronostico);
+		
 		tablePronosticos.getColumnModel().getColumn(1).setPreferredWidth(24);
 		scrollPanePronostico.setViewportView(tablePronosticos);
 		jLabelPronostico.setBounds(new Rectangle(63, 210, 75, 20));
