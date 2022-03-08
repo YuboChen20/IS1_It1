@@ -54,7 +54,7 @@ public class CreateAndQueryGUI extends JFrame {
 			ResourceBundle.getBundle("Etiquetas").getString("Query")
 
 	};
-	private String[] columnNamesProostico = new String[] {
+	private String[] columnNamesPronostico = new String[] {
 			ResourceBundle.getBundle("Etiquetas").getString("PronosticoN"), 
 			ResourceBundle.getBundle("Etiquetas").getString("Pronostico")
 
@@ -303,7 +303,7 @@ public class CreateAndQueryGUI extends JFrame {
 				domain.Question ev=(domain.Question)tableModelPronostico.getValueAt(i,2); // obtain ev object
 				Vector<Pronostico> pronosticos=ev.getPronosticos();
 
-				tableModelQueries.setDataVector(null, columnNamesQueries);
+				tableModelPronostico.setDataVector(null, columnNamesPronostico);
 
 				if (pronosticos.isEmpty())
 					jLabelPronostico.setText(ResourceBundle.getBundle("Etiquetas").getString("NoQueries")+": "+ev.getQuestion());
@@ -324,8 +324,9 @@ public class CreateAndQueryGUI extends JFrame {
 		
 		getContentPane().add(scrollPanePronostico);
 		tablePronosticos.setModel(tableModelPronostico);
+		tableModelPronostico = new DefaultTableModel(null, columnNamesPronostico);
 		
-		tablePronosticos.getColumnModel().getColumn(1).setPreferredWidth(24);
+		tablePronosticos.getColumnModel().getColumn(0).setPreferredWidth(25);
 		scrollPanePronostico.setViewportView(tablePronosticos);
 		jLabelPronostico.setBounds(new Rectangle(63, 210, 75, 20));
 		jLabelPronostico.setBounds(555, 257, 75, 20);
