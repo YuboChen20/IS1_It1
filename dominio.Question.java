@@ -56,7 +56,7 @@ public class Question implements Serializable {
 		return pronosticos;
 	}
 
-	public void setQuestions(Vector<Pronostico> pronostico) {
+	public void setPronosticos(Vector<Pronostico> pronostico) {
 		this.pronosticos = pronosticos;
 	}
 
