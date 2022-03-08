@@ -149,6 +149,28 @@ public class BLFacadeImplementation  implements BLFacade {
     	this.dbManager.close();
     	return b;
     }
+	
+	/*
+	//Metodo utilizado en CreateAndQuerieGUI
+	@Override
+	public Event createEvent(String inputDescription, Date firstDay) throws EventFinished {
+		
+		dbManager.open(false);
+		Event ev=null;
+		
+	    
+		if(new Date().compareTo(firstDay)>0)
+			throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
+				
+		
+		 //qry=dbManager.createQuestion(event,question,betMinimum);	
+		 ev=dbManager.createEvent(inputDescription,firstDay);
+		dbManager.close();
+		
+		return ev;
+		
+	}
+	*/
 
 }
 
