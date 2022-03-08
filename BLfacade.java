@@ -63,4 +63,9 @@ public interface BLFacade  {
 	@WebMethod public Usuario login(String user, String pass);
 	
 	@WebMethod public boolean createEvent(String description,Date eventDate);
+	
+	/*
+	//Metodo utilizado en CreateAndQuerieGUI
+	@WebMethod public Event createEvent(String inputDescription, Date firstDay) throws EventFinished;
+	*/
 }
