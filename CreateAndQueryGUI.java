@@ -339,7 +339,7 @@ public class CreateAndQueryGUI extends JFrame {
 		
 		getContentPane().add(textFieldPronostico);
 		jButtonPronostico.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+/*			public void actionPerformed(ActionEvent e) {
 				
 				try {
 					
@@ -380,6 +380,7 @@ public class CreateAndQueryGUI extends JFrame {
 				
 			}
 		});
+		*/
 		jButtonPronostico.setBounds(new Rectangle(399, 275, 130, 30));
 		jButtonPronostico.setBounds(655, 315, 149, 30);
 		this.getContentPane().add(jButtonPronostico, null);
