@@ -323,8 +323,9 @@ public class CreateAndQueryGUI extends JFrame {
 		});
 		
 		getContentPane().add(scrollPanePronostico);
-		tablePronosticos.setModel(tableModelPronostico);
 		tableModelPronostico = new DefaultTableModel(null, columnNamesPronostico);
+		tablePronosticos.setModel(tableModelPronostico);
+
 		
 		tablePronosticos.getColumnModel().getColumn(0).setPreferredWidth(25);
 		scrollPanePronostico.setViewportView(tablePronosticos);
