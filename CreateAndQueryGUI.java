@@ -55,6 +55,11 @@ public class CreateAndQueryGUI extends JFrame {
 	};
 	private JTextField textFieldDescripcionEvento;
 	private final JLabel jLabelMsg2 = new JLabel();
+	private final JScrollPane scrollPanePronostico = new JScrollPane();
+	private final JTable tablePronosticos = new JTable();
+	private final JLabel jLabelPronostico = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateAndQueryGUI.jLabelPronostico.text")); //$NON-NLS-1$ //$NON-NLS-2$
+	private final JTextField textFieldPronostico = new JTextField();
+	private final JButton jButtonPronostico = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateAndQueryGUI.jButtonPronostico.text")); //$NON-NLS-1$ //$NON-NLS-2$
 	
 	public CreateAndQueryGUI(Vector<domain.Event> v) {
 		try {
@@ -67,7 +72,7 @@ public class CreateAndQueryGUI extends JFrame {
 	private void jbInit(Vector<domain.Event> v) throws Exception {
 
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(604, 441));
+		this.setSize(new Dimension(915, 435));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("CreateQuery"));
 		jComboBoxEvents.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -280,6 +285,38 @@ public class CreateAndQueryGUI extends JFrame {
 		jLabelMsg2.setBounds(321, 289, 225, 20);
 		
 		getContentPane().add(jLabelMsg2);
+		scrollPanePronostico.setBounds(new Rectangle(138, 274, 406, 116));
+		scrollPanePronostico.setBounds(610, 47, 250, 146);
+		
+		getContentPane().add(scrollPanePronostico);
+		tablePronosticos.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Pronostico", "Numero Pronostico"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Object.class, Integer.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		tablePronosticos.getColumnModel().getColumn(1).setPreferredWidth(24);
+		scrollPanePronostico.setViewportView(tablePronosticos);
+		jLabelPronostico.setBounds(new Rectangle(63, 210, 75, 20));
+		jLabelPronostico.setBounds(555, 257, 75, 20);
+		
+		getContentPane().add(jLabelPronostico);
+		textFieldPronostico.setBounds(new Rectangle(138, 240, 60, 20));
+		textFieldPronostico.setBounds(620, 258, 240, 20);
+		
+		getContentPane().add(textFieldPronostico);
+		jButtonPronostico.setBounds(new Rectangle(399, 275, 130, 30));
+		jButtonPronostico.setBounds(655, 315, 149, 30);
+		
+		getContentPane().add(jButtonPronostico);
 		
 		
 		
