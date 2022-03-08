@@ -50,6 +50,15 @@ public class Question implements Serializable {
 
 		//this.event = event;
 	}
+	
+		
+	public Vector<Pronostico> getPronosticos() {
+		return pronosticos;
+	}
+
+	public void setQuestions(Vector<Pronostico> pronostico) {
+		this.pronosticos = pronosticos;
+	}
 
 	/**
 	 * Get the  number of the question
