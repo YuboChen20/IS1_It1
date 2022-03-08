@@ -334,10 +334,54 @@ public class CreateAndQueryGUI extends JFrame {
 		getContentPane().add(jLabelPronostico);
 		textFieldPronostico.setBounds(new Rectangle(138, 240, 60, 20));
 		textFieldPronostico.setBounds(620, 258, 240, 20);
+		this.getContentPane().add(textFieldPronostico, null);
 		
 		getContentPane().add(textFieldPronostico);
+		jButtonPronostico.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					Date firstDay = UtilDate.trim(calendarAct.getTime());
+					
+					jLabelError.setText("");
+					jLabelMsg.setText("");
+					jLabelMsg2.setText("");
+
+					// Displays an exception if the query field is empty
+					String inputPronostico=textFieldPronostico.getText();
+
+					if (inputPronostico.length() > 0) {
+
+							// Obtain the business logic from a StartWindow class (local or remote)
+							BLFacade facade = MainGUI.getBusinessLogic();
+
+							Event pronostico=facade.createPronostico(inputPronostico,tableQueries.getSelectedRow());
+						//	facade.createPronostico(event, quest, pronostico);
+
+							jLabelMsg2.setText(ResourceBundle.getBundle("Etiquetas").getString("PronosticoCreated"));
+							
+						
+							
+							actualizarTabla();	
+							
+							
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+
+				
+				
+				
+				
+				
+				
+			}
+		});
 		jButtonPronostico.setBounds(new Rectangle(399, 275, 130, 30));
 		jButtonPronostico.setBounds(655, 315, 149, 30);
+		this.getContentPane().add(jButtonPronostico, null);
 		
 		getContentPane().add(jButtonPronostico);
 		
