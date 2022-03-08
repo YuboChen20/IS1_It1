@@ -292,5 +292,25 @@ public class DataAccess  {
 		db.getTransaction().commit();
 		return true;
 	}
+	
+	//El metodo utilizado en CreateAndQuerieGUI
+	/*
+	public Event createEvent(String inputDescription, Date firstDay) {
+		
+		System.out.println(">> DataAccess: createEvent=> description= "+inputDescription+" date="+firstDay.toString());
+		
+		//Event ev = db.find(Event.class, event.getEventNumber());
+		
+		//if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+		
+		db.getTransaction().begin();
+		Event ev=new Event(inputDescription,firstDay);
+		db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
+						// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+		db.getTransaction().commit();
+		return ev;
+		
+	}
+	*/
 		
 }
