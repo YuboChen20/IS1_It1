@@ -326,14 +326,7 @@ public class DataAccess  {
 			return questions;
 	}
 	
-	public List<Pronostico> findPronosticos(Question q) {
-		
-		TypedQuery<Pronostico>  query = db.createQuery("SELECT FROM Pronostico q WHERE q.getQuestion()=?1",Pronostico.class);
-		query.setParameter(1, q);
-		List<Pronostico> pronosticos = query.getResultList();
-		
-		return pronosticos;
-}
+	
 	
 	
 	public boolean createPronostic(String description, Event event,int i) {
@@ -365,7 +358,14 @@ public class DataAccess  {
 	}
 	
 	
-	
+	public List<Pronostico> findPronosticos(Question q) {
+		
+		TypedQuery<Pronostico>  query = db.createQuery("SELECT FROM Pronostico q WHERE q.getQuestion()=?1",Pronostico.class);
+		query.setParameter(1, q);
+		List<Pronostico> pronosticos = query.getResultList();
+		
+		return pronosticos;
+}
 	
 	
 		
