@@ -68,4 +68,6 @@ public interface BLFacade  {
 	//Metodo utilizado en CreateAndQuerieGUI
 	@WebMethod public Event createEvent(String inputDescription, Date firstDay) throws EventFinished;
 	*/
+	
+	@WebMethod public boolean createPronostic(String pr,Event event,int i);
 }
