@@ -172,5 +172,17 @@ public class BLFacadeImplementation  implements BLFacade {
 	}
 	*/
 
+	
+    @WebMethod 
+    public boolean createPronostic(String pr,Event event,int i) {
+    	dbManager.open(false);
+    	boolean b = dbManager.createPronostic(pr,event,i);
+    	this.dbManager.close();
+    	return b;
+    }
+	
+	
+	
+	
 }
 
