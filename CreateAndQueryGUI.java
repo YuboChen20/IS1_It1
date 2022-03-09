@@ -256,7 +256,11 @@ public class CreateAndQueryGUI extends JFrame {
 
 							jLabelMsg2.setText(ResourceBundle.getBundle("Etiquetas").getString("EventCreated"));
 							
-						
+							
+							jCalendar.setCalendar(calendarAct);
+							facade = MainGUI.getBusinessLogic();
+							datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar.getDate());
+							paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 							
 							actualizarTabla();	
 							
