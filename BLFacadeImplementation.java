@@ -181,7 +181,13 @@ public class BLFacadeImplementation  implements BLFacade {
     	return b;
     }
 	
-	
+ @WebMethod public List<Pronostico> findPronosticos(Question q) throws PronosticAlreadyExist{
+    	dbManager.open(false);
+    	List<Pronostico> p = dbManager.findPronosticos(q);
+    	if(p==null) throw new PronosticAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorPronosAlreadyEx"));
+    	this.dbManager.close();
+    	return p;
+    }
 	
 	
 }
