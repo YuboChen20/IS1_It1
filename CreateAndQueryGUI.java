@@ -304,25 +304,32 @@ public class CreateAndQueryGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int i=tableQueries.getSelectedRow();
-				domain.Question ev=(domain.Question)tableModelPronostico.getValueAt(i,2); // obtain ev object
-				Vector<Pronostico> pronosticos=ev.getPronosticos();
+				Event ev= (Event) jComboBoxEvents.getSelectedItem();
+				Question q = ev.getQuest(i);
+						
+				BLFacade facade = MainGUI.getBusinessLogic();
+                try {
+                	List<Pronostico> pronosticos=facade.findPronosticos(q);
+                
+                	tableModelPronostico.setDataVector(null, columnNamesPronostico);
 
-				tableModelPronostico.setDataVector(null, columnNamesPronostico);
+                	if (pronosticos.isEmpty())
+                		jLabelPronostico.setText(ResourceBundle.getBundle("Etiquetas").getString("NoQueries")+": "+q);
+                	else 
+                		jLabelPronostico.setText(ResourceBundle.getBundle("Etiquetas").getString("SelectedQuerie")+" "+q);
 
-				if (pronosticos.isEmpty())
-					jLabelPronostico.setText(ResourceBundle.getBundle("Etiquetas").getString("NoQueries")+": "+ev.getQuestion());
-				else 
-					jLabelPronostico.setText(ResourceBundle.getBundle("Etiquetas").getString("SelectedQuerie")+" "+ev.getQuestion());
+                	for (domain.Pronostico p:pronosticos){
+                		Vector<Object> row = new Vector<Object>();
 
-				for (domain.Pronostico p:pronosticos){
-					Vector<Object> row = new Vector<Object>();
-
-					row.add(p.getPronosNumber());
-					row.add(p.getPronostico());
-					tableModelPronostico.addRow(row);	
-				}
-				tablePronosticos.getColumnModel().getColumn(0).setPreferredWidth(25);
-				tablePronosticos.getColumnModel().getColumn(1).setPreferredWidth(268);
+                		row.add(p.getPronosNumber());
+                		row.add(p.getPronostico());
+                		tableModelPronostico.addRow(row);	
+                	}
+                	tablePronosticos.getColumnModel().getColumn(0).setPreferredWidth(25);
+                	tablePronosticos.getColumnModel().getColumn(1).setPreferredWidth(268);
+                }catch(PronosticAlreadyExist e1) {
+                	lblNewLabel.setText(ResourceBundle.getBundle("Etiquetas").getString("ErrorPronosAlreadyEx"));
+                }
 			}
 		});
 		
