@@ -70,4 +70,7 @@ public interface BLFacade  {
 	*/
 	
 	@WebMethod public boolean createPronostic(String pr,Event event,int i);
+	
+	
+	@WebMethod public List<Pronostico> findPronosticos(Question q) throws PronosticAlreadyExist;
 }
