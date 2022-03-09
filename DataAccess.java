@@ -312,5 +312,61 @@ public class DataAccess  {
 		
 	}
 	*/
+	
+	
+	
+	
+	public List<Question> findQuestion(Event e) {
+	
+		
+			TypedQuery<Question>  query = db.createQuery("SELECT FROM Question q WHERE q.getEvent()=?1",Question.class);
+			query.setParameter(1, e);
+			List<Question> questions = query.getResultList();
+
+			return questions;
+	}
+	
+	public List<Pronostico> findPronosticos(Question q) {
+		
+		TypedQuery<Pronostico>  query = db.createQuery("SELECT FROM Pronostico q WHERE q.getQuestion()=?1",Pronostico.class);
+		query.setParameter(1, q);
+		List<Pronostico> pronosticos = query.getResultList();
+		
+		return pronosticos;
+}
+	
+	
+	public boolean createPronostic(String description, Event event,int i) {
+		System.out.println(">> DataAccess: createPronostico=> "+description);
+
+		List<Question> listq= findQuestion(event);
+		System.out.println("QUESTIONES SIZE: "+listq.size());
+		System.out.println("QUESTIONES: "+listq);
+		System.out.println("INDICE: "+i);
+		if(listq.size()<0 | listq.size()<i)return false;
+		Question q = listq.get(i);   //da error
+		
+		
+		
+		List<Pronostico> listp=findPronosticos(q);
+		if(listp!=null) {
+			for(Pronostico pro: listp) {
+				if(pro.getPronostico().equals(description))return false;
+			}
+		}
+		
+			db.getTransaction().begin();
+			Pronostico p = new Pronostico(description, q);
+			//db.persist(q);
+			db.persist(p); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
+							// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+			db.getTransaction().commit();
+			return true;
+	}
+	
+	
+	
+	
+	
 		
 }
